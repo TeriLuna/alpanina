@@ -8915,79 +8915,6 @@ div[class^='bg-black'] .filter.filter-style-4 ul li:hover, div[class^='bg-black'
   transform: translate(-50%, -50%);
 }
 
-/*body:after {
-  content: '';
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: 998;
-  background: #fff;
-  width: 100%;
-  height: 100%;
-}*/
-
-/*body.loaded:after {
-  display: none;
-}
-*/
-/*.preloader {
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: 999;
-  visibility: visible;
-  opacity: 1;
-  background: #fff;
-  width: 100%;
-  height: 100%;
-  text-align: center;
-}
-
-.preloader div {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  -webkit-transform: translate(-50%, -50%);
-  transform: translate(-50%, -50%);
-}
-
-.loaded .preloader {
-  visibility: hidden;
-  opacity: 0;
-  -webkit-transition: ease-out 0.3s;
-  transition: ease-out 0.3s;
-}
-
-.preloader-1 div {
-  position: relative;
-  width: 70px;
-  height: 70px;
-}
-
-.preloader-1 div .loader-circular {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  transform-origin: center center;
-  width: 70px;
-  height: 70px;
-  margin: auto;
-  animation: loader-one-rotate 2s linear infinite;
-}
-
-.preloader-1 div .loader-path {
-  fill: none;
-  stroke: #131517;
-  stroke-width: 2.5;
-  stroke-dasharray: 1, 200;
-  stroke-dashoffset: 0;
-  stroke-linecap: round;
-  stroke-miterlimit: 10;
-  animation: loader-one-dash 1.5s ease-in-out infinite;
-}*/
-
 @keyframes loader-one-rotate {
   100% {
     transform: rotate(360deg);
@@ -11065,4 +10992,24 @@ div[class^='bg-black'] .border-all, div[class^='bg-black'] .border-top, div[clas
 
 .bg-green-06 {
   background-color: rgb(19,63,72);
+}
+/*-------------------------------------------------
+	Product
+-------------------------------------------------*/
+.product-title {
+  position: relative;
+  padding: 10px 0px 6px 0px;
+  text-align: center;
+}
+.product-name {
+  text-transform: uppercase;
+  letter-spacing: .2em;
+  font-size: 1.1rem;
+  margin-bottom: 0;
+}
+
+.product-price {
+  font-size: 1rem;
+  font-weight: bold;
+  color: #000;
 }

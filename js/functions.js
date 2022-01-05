@@ -278,8 +278,8 @@ if (fm.length) {
 ===============================================*/
 $('a[href*="#"]').not('[href="#"]').not('[data-toggle="tab"]').on("click", function(e) {
   if (
-    location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') 
-    && 
+    location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '')
+    &&
     location.hostname == this.hostname
   ) {
     var target = $(this.hash);
@@ -626,7 +626,7 @@ $(".accordion-title").each(function() {
   if ($this.parents(".accordion").find("li").hasClass("active")) {
     var accordionActiveContent = $this.parents(".accordion").find("li.active").children(".accordion-content");
     var accordionHeight = accordionActiveContent.prop("scrollHeight");
-    
+
     accordionActiveContent.css({'max-height': accordionHeight + "px"});
   }
 
