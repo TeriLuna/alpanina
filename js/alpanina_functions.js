@@ -1,6 +1,7 @@
 /*===============================================
   1. Saludo y conexión
   2. Retiros
+  3. Array y productos
 ===============================================*/
 
 /*===============================================
@@ -151,37 +152,89 @@
   2. Retiros
 ===============================================*/
 
-function User(){
+// function User(){
 
-  this.register = function(){
-    let name = prompt("Ingresa tu nombre");
-    this.name = name;
-    return this;
-  }
+//   this.register = function(){
+//     let name = prompt("Ingresa tu nombre");
+//     this.name = name;
+//     return this;
+//   }
 
-  this.getName = function(){
-    return this.name;
-  }
-}
+//   this.getName = function(){
+//     return this.name;
+//   }
+// }
 
-class Retreat {
-  constructor(name, price, description, url){
+// class Retreat {
+//   constructor(name, price, description, url){
+//     this.name = name;
+//     this.price = price;
+//     this.description = description;
+//     this.url = url;
+//   }
+
+//   showInfo = function(){
+//     return `${this.name} \n ${this.price} \n ${this.description}`;
+//   }
+// }
+
+// const yageOne = new Retreat("Yagé por una noche", "80.000", "La medicina del Yagé / Ayahuasca es una medicina ancestral que se encuentra en Perú y Colombia. Son medicinas que nos conectan con la Pachamama, los seres espirituales, los apus... \n Para iniciar con esta medicina deberás hacer una dieta que te indicaremos más adelante.", "retiros.html#yageUna");
+// const yageThree = new Retreat("Yagé por tres noches", "160.000", "Tendrás medicina cada noche durante tres noches.", "retiros.html#yageTres");
+// const yagePrivate = new Retreat("Yagé privado", "Se acuerda el precio una vez se tenga lugar y cantidad de personas", "Elegirás el lugar y la cantidad de personas para tu retiro privado", "retiros.html#yagePrivado");
+
+// const user = new User();
+// user.register();
+
+// alert(`Hola ${user.getName()}, bienvenido a Alpa Nina te invitamos a conocer nuestros retiros: \n \n ${yageOne.showInfo()} \n \n ${yageThree.showInfo()} \n \n ${yagePrivate.showInfo()}`);
+
+/*===============================================
+  3. Array y productos ENTREGA PARA DESAFIO Y DESAFIO COMPLEMENTARIO
+===============================================*/
+class Product {
+  constructor(name, price) {
     this.name = name;
     this.price = price;
-    this.description = description;
-    this.url = url;
   }
-
-  showInfo = function(){
-    return `${this.name} \n ${this.price} \n ${this.description}`;
+  namePrice = function() {
+    return this.name + " $" + this.price;
   }
 }
 
-const yageOne = new Retreat("Yagé por una noche", "80.000", "La medicina del Yagé / Ayahuasca es una medicina ancestral que se encuentra en Perú y Colombia. Son medicinas que nos conectan con la Pachamama, los seres espirituales, los apus... \n Para iniciar con esta medicina deberás hacer una dieta que te indicaremos más adelante.", "retiros.html#yageUna");
-const yageThree = new Retreat("Yagé por tres noches", "160.000", "Tendrás medicina cada noche durante tres noches.", "retiros.html#yageTres");
-const yagePrivate = new Retreat("Yagé privado", "Se acuerda el precio una vez se tenga lugar y cantidad de personas", "Elegirás el lugar y la cantidad de personas para tu retiro privado", "retiros.html#yagePrivado");
+let products =  [];
+products.push(new Product("Mambe", 80000));
+products.push(new Product("Ambil", 60000));
+products.push(new Product("Aplicador individual", 30000));
+products.push(new Product("Aplicador de Rape", 50000));
+products.push(new Product("Manillas tejidas", 12000));
+products.push(new Product("Palillo para ambil", 3000));
+products.push(new Product("Tula tejida", 42000));
+class ProductsOrderer {
+  constructor(products) {
+    this.products = products;
+  }
+  order = function() {
+    let names = "";
 
-const user = new User();
-user.register();
+    let resp = this.products.sort((current, next) => {
+      if (current.name > next.name) {
+        return -1;
+      }
+      if (next.name > current.name) {
+          return 1;
+      }
+      return 0;
+    });
 
-alert(`Hola ${user.getName()}, bienvenido a Alpa Nina te invitamos a conocer nuestros retiros: \n \n ${yageOne.showInfo()} \n \n ${yageThree.showInfo()} \n \n ${yagePrivate.showInfo()}`);
+    resp.reverse().forEach(e => {
+      console.log(e.namePrice());
+      names = names + e.namePrice() + "\n";
+    });
+
+    return names;
+  }
+}
+
+listOrderer = new ProductsOrderer(products);
+
+alert("Los siguientes son las medicinas ofrecidas por Alpa Nina: " + "\n" + listOrderer.order())
+
