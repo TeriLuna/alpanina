@@ -19,8 +19,6 @@ function randomPhraseGenerator() {
 }
 randomPhraseGenerator();
 
-
-
 /*================================================================================
 SHOP STORE PRODUCTS
 ================================================================================*/
@@ -35,8 +33,6 @@ let products = [
   { id: 7, name: 'Palillo para Ambil', price: 3000, img: '../css/images/col-2-tall.jpg' },
   { id: 8, name: 'Tula tejida para Mambe y Ambil', price: 42000, img: '../css/images/col-2-tall.jpg' },
 ];
-
-//SHOP SECTION
 
 const shopContainer = document.getElementById('js-item-container');
 products.forEach((product) => {
