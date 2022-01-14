@@ -1,58 +1,70 @@
-class Product {
-  constructor(name, price) {
-    this.name = name;
-    this.price = price;
-  }
-  namePrice = function() {
-    return this.name + " $" + this.price;
-  }
+/*================================================================================
+RANDOM PHRASE GENERATOR
+================================================================================*/
+let phrases = [
+  "Para los indígenas mambear es como leer la Biblia, porque a través de él Dios nos lo da todo",
+  "La medicina te abre no solamente la visión sino también el corazón",
+  "Aprende a ver en amor, hablar en amor, vivir en amor, ser feliz en amor",
+  "No tomes los comentarios como algo propio porque no son una opinión sobre ti sino sobre ellos mismos",
+  "La gratitud llenará tu vida, tu alma y tu espíritu de infinita luz",
+];
+
+const randomPhrase = document.getElementById('phrases');
+
+let randomPhraseIndex = document.createElement('div');
+function randomPhraseGenerator() {
+  randomPhrase.classList.add('phrase');
+  randomPhraseIndex = Math.floor(Math.random() * phrases.length);
+  randomPhrase.innerHTML = `<h3>${phrases[randomPhraseIndex]}</h3>`;
 }
-
-let products =  [];
-products.push(new Product("Mambe", 80000));
-products.push(new Product("Ambil", 60000));
-products.push(new Product("Aplicador individual", 30000));
-products.push(new Product("Aplicador de Rape", 50000));
-products.push(new Product("Manillas tejidas", 12000));
-products.push(new Product("Palillo para ambil", 3000));
-products.push(new Product("Tula tejida", 42000));
-class ProductsOrderer {
-  constructor(products) {
-    this.products = products;
-  }
-  order = function() {
-    let names = "";
-
-    let response = this.products.sort((current, next) => {
-      if (current.name > next.name) {
-        return -1;
-      }
-      if (next.name > current.name) {
-          return 1;
-      }
-      return 0;
-    });
-
-    response.reverse().forEach(e => {
-      names += e.namePrice() + "\n";
-    });
-
-    return names;
-  }
-}
-
-listOrderer = new ProductsOrderer(products);
-
-alert(`Los siguientes son las medicinas ofrecidas por Alpa Nina: \n ${listOrderer.order()}`)
+randomPhraseGenerator();
 
 
-let purchase = prompt(`¿Qué medicina deseas comprar? \n Por favor separe los productos por comas y espacio \n ${listOrderer.order()}`);
-let arrayPurchase = purchase.split(", ");
 
-let totalCompra = 0;
+/*================================================================================
+SHOP STORE PRODUCTS
+================================================================================*/
 
-for (i = 0; i < arrayPurchase.length; i++) {
-  totalCompra += products.find(e => e.name == arrayPurchase[i]).price;
-}
-alert(`Registro de compra realizada! \n Los productos comprados son ${arrayPurchase} y el total de tu compra fue $ ${totalCompra} \n ¡Gracias por tu compra!`);
+let products = [
+  { id: 1, name: 'Mambe', price: 80000, img: '../css/images/col-2-tall.jpg' },
+  { id: 2, name: 'Ambil', price: 60000, img: '../css/images/col-2-tall.jpg' },
+  { id: 3, name: 'Rapé', price: 85000, img: '../css/images/col-2-tall.jpg' },
+  { id: 4, name: 'Aplicador de Rapé individual', price: 30000, img: '../css/images/col-2-tall.jpg' },
+  { id: 5, name: 'Aplicador de Rapé', price: 50000, img: '../css/images/col-2-tall.jpg' },
+  { id: 6, name: 'Manillas tejidas', price: 12000, img: '../css/images/col-2-tall.jpg' },
+  { id: 7, name: 'Palillo para Ambil', price: 3000, img: '../css/images/col-2-tall.jpg' },
+  { id: 8, name: 'Tula tejida para Mambe y Ambil', price: 42000, img: '../css/images/col-2-tall.jpg' },
+];
 
+//SHOP SECTION
+
+const shopContainer = document.getElementById('js-item-container');
+products.forEach((product) => {
+  let productItem = document.createElement('div');
+  productItem.classList.add('col-12', 'col-sm6', 'col-md-4');
+  productItem.innerHTML = `
+  <div class="product-box">
+    <div class="product-img">
+      <!-- Product IMG -->
+      <a class="product-img-link" href="#">
+        <img src="${product.img}" alt="">
+      </a>
+      <!-- Add to Cart -->
+      <div class="add-to-cart">
+        <a href="#">Agregar</a>
+      </div>
+    </div>
+    <div class="product-title">
+      <!-- Product Title -->
+      <h6 class="font-weight-medium">
+        <a href="../products/mambe.html">${product.name}</a>
+      </h6>
+      <!-- Product Price -->
+      <div class="price">
+        <span>$${product.price}</span>
+      </div>
+    </div>
+  </div>
+  `;
+shopContainer.appendChild(productItem);
+});
