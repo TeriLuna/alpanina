@@ -22,7 +22,6 @@ randomPhraseGenerator();
 /*================================================================================
 SHOP STORE PRODUCTS
 ================================================================================*/
-
 class PaintDiv{
   run(products){
     const shopContainer = document.getElementById('js-item-container');
@@ -129,7 +128,6 @@ paintDiv.run(productsInDB, currentCart);
 /*================================================================================
 PRODUCTS DESCRIPTION TABS
 ================================================================================*/
-
 
 $(document).ready(function () {
   pageUrl = window.location.href;

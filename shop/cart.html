@@ -131,111 +131,101 @@
     <!-- End Header-->
 
     <!-- Main -->
-    <div class="section">
+    <div class="section-lg">
 			<div class="container">
-				<div class="row col-spacing-50">
-					<div class="col-12 col-lg-7">
-						<div class="owl-carousel product-carousel owl-dots-overlay-right">
-							<div data-hash="1">
-								<img src="../css/images/col-1-square.jpg" alt="">
-							</div>
-							<div data-hash="2">
-								<img src="../css/images/col-1-square.jpg" alt="">
-							</div>
-							<div data-hash="3">
-								<img src="../css/images/col-1-square.jpg" alt="">
-							</div>
-						</div>
-						<ul class="product-carousel-thumbnails">
-							<li><a href="#1"><img src="../css/images/col-2-square.jpg" alt=""></a></li>
-							<li><a href="#2"><img src="../css/images/col-2-square.jpg" alt=""></a></li>
-							<li><a href="#3"><img src="../css/images/col-2-square.jpg" alt=""></a></li>
-						</ul>
+				<div class="row col-spacing-40">
+					<div class="col-12 col-xl-8">
+						<table class="table cart-table">
+							<thead>
+								<tr>
+									<th scope="col"></th>
+									<th scope="col"></th>
+									<th scope="col">Product</th>
+									<th scope="col">Price</th>
+									<th scope="col">Quantity</th>
+									<th scope="col">Subtotal</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<th scope="row"><a href="#">x</a></th>
+									<td class="product-thumbnail">
+										<a href="#"><img src="../assets/images/col-4-square.jpg" alt=""></a>
+									</td>
+									<td>Product name</td>
+									<td>$20.00</td>
+									<td>
+										<form class="product-quantity">
+											<div class="qnt">
+												<input type="number" id="quantity" name="quantity" min="1" max="10" value="1">
+											</div>
+										</form>
+									</td>
+									<td>$20.00</td>
+								</tr>
+								<tr>
+									<th scope="row"><a href="#">x</a></th>
+									<td class="product-thumbnail">
+										<a href="#"><img src="../assets/images/col-4-square.jpg" alt=""></a>
+									</td>
+									<td>Product name</td>
+									<td>$20.00</td>
+									<td>
+										<form class="product-quantity">
+											<div class="qnt">
+												<input type="number" id="quantity" name="quantity" min="1" max="10" value="1">
+											</div>
+										</form>
+									</td>
+									<td>$20.00</td>
+								</tr>
+							</tbody>
+						</table>
 					</div>
-					<div class="col-12 col-lg-5">
-						<ul class="list-inline-slash font-small margin-bottom-10">
-							<li><a href="../pages/shop.html">Tienda</a></li>
-							<li><a href="mambe.html">Mambe</a></li>
-						</ul>
-						<h3 class="font-weight-normal margin-0">Mambe</h3>
-						<div class="product-price">
-							<h5 class="font-weight-light">
-                <ins>$80.000</ins>
-              </h5>
+					<div class="col-12 col-xl-4">
+						<div class="bg-grey padding-20 padding-md-30 padding-lg-40">
+							<h5 class="font-weight-medium">Cart totals</h5>
+							<table class="table cart-totals">
+								<tbody>
+									<tr>
+										<th scope="row">Subtotal</th>
+										<td>$20.00</td>
+									</tr>
+									<tr>
+										<th scope="row">Shipping</th>
+										<td>
+											<div class="form-check">
+												<input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" checked>
+												<label class="form-check-label" for="exampleRadios1">
+												Flat rate: $14.00
+												</label>
+											</div>
+											<div class="form-check">
+												<input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="option2">
+												<label class="form-check-label" for="exampleRadios2">
+												Free shipping
+												</label>
+											</div>
+											<div class="form-check">
+												<input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios3" value="option3">
+												<label class="form-check-label" for="exampleRadios3">
+												Local pickup
+												</label>
+											</div>
+										</td>
+									</tr>
+									<tr>
+										<th scope="row">Total</th>
+										<td>$34.00</td>
+									</tr>
+								</tbody>
+							</table>
+							<a class="button button-md button-dark button-fullwidth margin-top-20" href="#">Proceed</a>
 						</div>
-						<p>El Mambe emana la palabra de vida, palabra dulce, es decir nos enseña a expresarnos con más dulzura y llevarnos a un estado de consciencia donde nuestra palabra puede llegar a ser muy sanadora y honesta.</p>
-						<form class="product-quantity margin-top-30">
-							<div class="qnt">
-								<input type="number" id="quantity" name="quantity" min="1" max="10" value="1">
-							</div>
-							<button class="button button-md button-dark" type="submit">Añadir</button>
-						</form>
 					</div>
 				</div><!-- end row -->
 			</div><!-- end container -->
 		</div>
-
-		<div class="section">
-      <div class="container">
-        <div class="product-info-box">
-          <ul class="nav margin-bottom-20">
-            <li class="nav-item">
-              <a class="nav-link active show jsTab" data-toggle="tab" href="#specs">Specifications</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link jsTab" data-toggle="tab" href="#additionalInfo">Additional Info</a>
-            </li>
-          </ul>
-          <div class="tab-content" id="jsTabContent">
-            <div class="tab-pane fade show active" id="specs">
-              <table class="table">
-                <tbody>
-                  <tr>
-                    <th scope="row">Peso</th>
-                    <td>500 g</td>
-                  </tr>
-                  <tr>
-                    <th scope="row">Aporte Nutricional</th>
-                    <td>
-                      Cada 100 gr contiene: <br>
-                      Nitrógeno total 20.06 mg,
-                      Alcaloides totales no volátiles 0.70 mg,
-                      Grasa 3.68 mg,
-                      Proteína 19gr,
-                      Carbohidratos 47.50 mg,
-                      Beta caroteno 9.40 mg,
-                      Alfa-caroteno 2.76 mg,
-                      Vitamina C 6.47 mg,
-                      Vitamina E 40.17 mg,
-                      Tiamina (vitamina B1) 0.73 mg,
-                      Riboflavina ( vitamina B2) 0.88 mg,
-                      Niacina ( factor p.p) 8.37 mg,
-                      Calcio 997.62 mg,
-                      Fosfato 412.67 mg,
-                      Potasio 1,739.33 mg,
-                      Magnesio 299.30 mg,
-                      Sodio 39.41 mg,
-                      Aluminio 17.39 mg,
-                      Bario 6.18 mg,
-                      Hierro 136.64 mg,
-                      Estroncio 12.02 mg,
-                      Boro 6.75 mg,
-                      Cobre 1.22 mg,
-                      Zinc 2.21 mg,
-                      Manganeso 9.15 mg,
-                      Cromo 0.12 mg</td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-            <div class="tab-pane fade show" id="additionalInfo">
-              <p>Conocida también como "Lengua de Dios o Palabra de Vida". El mambe es la hoja de coca tostada, y hecha polvo mezclada con ceniza de yarumo azul. Se mambea en espacios compartidos y sociales ya que al ser el compañero del pensamiento, permite mayor claridad a la hora de expresarse con otrosy más, porque en la tradición, se dice que carga con la dulzura femenina que producesabiduría en las palabras.Además, físicamente otorga facilidad comunicativa, aumenta la concentración, mejora la actividad sensorial, disminuye el cansancio y el hambre, de ahí que se use en actividades físicas de largo aliento. Para los mayores es imprescindible contar con la compañía de la hoja de coca pues cuida de ellos y es la base para abonar su pensamiento. Asimismo, ha sido uno de los suplementos por excelencia para conservarlos ya que contieneproteínas y vitaminas en niveles elevados.</p>
-            </div>
-          </div>
-        </div>
-      </div><!-- end container -->
-    </div><!-- end section -->
-
     <!-- End Main -->
 
     <!-- Footer -->
@@ -317,7 +307,7 @@
     <script src="../plugins/jquery.min.js"></script>
     <script src="https://polyfill.io/v3/polyfill.min.js?features=IntersectionObserver"></script>
     <script src="../plugins/../plugins.js"></script>
-    <!-- <script src="js/alpanina_functions.js"></script> ALPANINA JAVASCRIPT FUNCTIONS -->
+    <script src="js/alpanina_functions.js"></script> <!-- ALPANINA JAVASCRIPT FUNCTIONS -->
     <script src="../js/functions.js"></script>
     <script src="../js/images_loaded.js"></script>
     <script src="../js/jquery.min.js"></script>
