@@ -70,7 +70,6 @@ class LocalStorageManager {
       localStorage.setItem('cart', null);
     }
   }
-
 }
 class Product {
   constructor(name, price, img, alt, direction) {
