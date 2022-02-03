@@ -746,7 +746,7 @@ $("#contactform").on("submit", function(e) {
 ===============================================*/
 $(".product-quantity .qnt").append('<a class="dec qnt-button" href="#">-</a><a class="inc qnt-button" href="#">+</a>');
 
-$(".qnt-button").on("click", function(e) {
+$(document).on("click", ".qnt-button", function(e) {
 
   var $button = $(this);
   var oldValue = $button.parent().find("input").val();
@@ -762,7 +762,10 @@ $(".qnt-button").on("click", function(e) {
     }
   }
 
-  $button.parent().find("input").val(newVal);
-  e.preventDefault();
-
+  const input = $button.parent().find("input");
+  const $input = $(input);
+  newVal = parseInt(newVal);
+  console.log($button.parent());
+  $input.val(newVal).attr('value', newVal).prop('value', newVal);
+  $input.trigger('focus').trigger('blur');
 });

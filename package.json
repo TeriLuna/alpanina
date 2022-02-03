@@ -1,0 +1,17 @@
+{
+  "type": "module",
+  "name": "javascript",
+  "version": "1.0.0",
+  "description": "",
+  "main": "alpanina_functions.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "jquery": "^3.6.0",
+    "babel-cli": "^6.26.0"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
