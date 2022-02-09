@@ -71,8 +71,6 @@ class LocalStorageManager {
   }
 
   setup() {
-    console.log(localStorage.getItem('cart'));
-
     if (!localStorage.getItem('cart')) {
 
       console.log('No hay nada en el carrito');
@@ -183,7 +181,7 @@ class Cart {
 
     if (SelectedProductInCart > -1) {
       if(hardReset){
-        this.productList[SelectedProductInCart].quantity = quantity;        
+        this.productList[SelectedProductInCart].quantity = quantity;
       }else{
         this.productList[SelectedProductInCart].quantity += quantity;
       }
@@ -196,12 +194,22 @@ class Cart {
   }
 
   totalPrice() {
-    return productList.reduce((total, product) => total + product.price, 0);
+    let total = 0;
+    this.productList.forEach((el) => {
+      total += el.subtotal;
+    });
+    return total
   }
 
   subtotalPrice(productId, quantity) {
     const product = this.productList.find((el) => el.product.id === productId);
     return product.product.price * quantity;
+  }
+
+  removeProduct(productId) {
+    const productToRemove = this.productList.findIndex((el) => el.product.id === productId);
+    this.productList.splice(productToRemove, 1);
+    _localStorage.saveProducts(this.productList);
   }
 }
 
@@ -217,12 +225,6 @@ const productsInDB = [
   new Product(7,'Palillo para Ambil',             3000,  imgsProduct7, '...' ),
   new Product(8,'Tula tejida para Mambe y Ambil', 42000, imgsProduct8, '...' ),
 ];
-
-const _localStorage = new LocalStorageManager();
-_localStorage.setup();
-const currentCart = new Cart(_localStorage.getProducts());
-const paintDiv = new PaintDiv();
-paintDiv.run(productsInDB, currentCart);
 
 /*================================================================================
 PRODUCTS DESCRIPTION TABS
@@ -247,10 +249,10 @@ $(document).ready(function () {
 SINGLE PRODUCT
 ================================================================================*/
 
-class ProductDescription {
+class ProductDescriptionPaint {
   run (){
     const productsContainer = $(".js-product-description");
-    console.log(productsContainer);
+
     if (productsContainer.length > 0) {
       const urlParams = new URLSearchParams(window.location.search);
       const productId = urlParams.get('id');
@@ -259,7 +261,7 @@ class ProductDescription {
       const imageItem = (images)=>{
         const containerBig = $(".js-product-imgBig-container");
         images.forEach(({pathBig}, index) => {
-          const item = 
+          const item =
           `<div data-hash="${index}">
             <img src="${pathBig}" alt="">
           </div>`;
@@ -284,6 +286,7 @@ class ProductDescription {
           e.preventDefault();
           const qty = parseInt($("#quantity").val());
           currentCart.addProduct(product.id, qty, true);
+          alert(`Tu producto ha sido agregado al carrito`);
         });
       }
 
@@ -326,60 +329,160 @@ class ProductDescription {
     }
   }
 }
-const prodcutView = new ProductDescription();
-prodcutView.run();
 
 /*================================================================================
 PRODUCTS IN CART
 ================================================================================*/
 class CartProductsPaint {
+
   run(cart) {
     const cartProducts = $(".js-cart-products");
+    const cartProductsTable = $(".js-table-products");
+    const containerToAddEmptyState = cartProductsTable.parent();
 
-    cart.productList.forEach(({product, quantity, subtotal}, index) => {
-      console.log(product);
-      let childToAdd =`<tr class='js-cart-item-${index}'>
-        <th scope="row" class="removeProduct">x</th>
-        <td class="product-thumbnail">
-          <a href="#"><img src="../${product.images[0].pathSmall}" alt="${product.alt}"></a>
-        </td>
-        <td>${product.name}</td>
-        <td>$ ${product.price}</td>
-        <td>
-          <form class="product-quantity">
-            <div class="qnt">
-              <input type="number" id="quantity_${index}" name="quantity[${index}]" min="1" max="10" value="${quantity}">
+    const showEmptyCart = () => {
+
+      if (cartProductsTable.children("tbody").has("tr").length === 0) {
+      let emptyCart = `
+        <div class="section">
+          <div class="container">
+            <div class="row">
+              <div class="col-12">
+                <div class="alert alert-warning">
+                  <h4 class="alert-heading">No hay productos en el carrito</h4>
+                </div>
+              </div>
             </div>
-          </form>
-        </td>
-        <td class='js-subtotal'>$ ${subtotal} </td>
-      </tr>`
-      cartProducts.append(childToAdd);
-
-      const executeOnChange = () => {
-        $(document).on('blur', `#quantity_${index}`, (e) => {
-          const element = $(e.target);
-          const subtotal = $(element.parents(".js-cart-item-" + index).find(".js-subtotal"));
-          const qty = parseInt(element.val());
-          cart.addProduct(product.id, qty, true);
-          subtotal.text(`$ ${product.price * qty}`);
-        });
+          </div>
+        </div>`;
+        cartProductsTable.remove();
+        containerToAddEmptyState.append(emptyCart);
       }
-      executeOnChange();
+    }
 
-    });
+    if (cart.productList.length > 0) {
+
+      cart.productList.forEach(({product, quantity, subtotal}, index) => {
+
+        let childToAdd =`<tr class='js-cart-item-${index}'>
+          <th scope="row">
+            <a class="removeProduct_${index}" href="javascript:;">X</a>
+          </th>
+          <td class="product-thumbnail">
+            <a href="#">
+              <img src="../${product.images[0].pathSmall}" alt="${product.alt}">
+            </a>
+          </td>
+          <td>${product.name}</td>
+          <td>$ ${product.price}</td>
+          <td>
+            <form class="product-quantity">
+              <div class="qnt">
+                <input type="number" id="quantity_${index}" name="quantity[${index}]" min="1" max="10" value="${quantity}">
+              </div>
+            </form>
+          </td>
+          <td class='js-subtotal'>$ ${subtotal} </td>
+        </tr>`
+        cartProducts.append($(childToAdd).hide().fadeIn(1700));
+
+        const updateTotalView = () => {
+          $(".js-total-cart").text(`$${cart.totalPrice()}`);
+        }
+        const executeOnChange = () => {
+          $(document).on('blur', `#quantity_${index}`, (e) => {
+            const element = $(e.target);
+            const subtotal = $(element.parents(".js-cart-item-" + index).find(".js-subtotal"));
+            const qty = parseInt(element.val());
+            cart.addProduct(product.id, qty, true);
+            subtotal.text(`$ ${product.price * qty}`);
+            updateTotalView()
+          });
+        }
+
+        const removeProduct = () => {
+          $(document).on('click', `.removeProduct_${index}`, (event) => {
+            const $element = $(event.target);
+            const rowParent = $element.parents(".js-cart-item-" + index)
+            rowParent.fadeOut("slow", () => {
+              rowParent.remove();
+              showEmptyCart();
+            });
+            cart.removeProduct(product.id);
+            updateTotalView();
+          });
+        }
+
+        const execute = () => {
+          executeOnChange();
+          removeProduct();
+        }
+
+        execute();
+      });
+
+    }else{
+      showEmptyCart();
+    }
   }
-
 
   addFunctionalityToAddButton = () => {
     $(".js-add-to-card-button").on("click", (el)=>{
       const $el = $(this);
-      currentCart.addProduct()
+      currentCart          .addProduct()
     });
   }
 }
 
+class TotalProductCartPaint {
+  run(cart) {
+    const totalProductCart = $(".js-cart-total");
 
+    const checkoutSummary = (`
+      <tbody>
+      <tr>
+        <th scope="row">Subtotal</th>
+        <td class="js-total-cart">$ ${cart.totalPrice()}</td>
+      </tr>
+      <tr>
+        <th scope="row">Envio</th>
+        <td>
+          <!-- <div class="form-check">
+            <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" checked>
+            <label class="form-check-label" for="exampleRadios1">
+            Envio Area Metropolitana $14000
+            </label>
+          </div> -->
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios3" value="option2">
+            <label class="form-check-label" for="exampleRadios3">
+            Recoger (solo aplica en Medellin)
+            </label>
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <th scope="row">Total</th>
+        <td class="js-total-cart">$ ${cart.totalPrice()}</td>
+      </tr>
+    </tbody>`);
+    totalProductCart.append(checkoutSummary);
+  }
+}
 
-const cartProduct = new CartProductsPaint();
-cartProduct.run(currentCart);
+// EXECUTE
+
+const _localStorage = new LocalStorageManager();
+_localStorage.setup();
+const currentCart = new Cart(_localStorage.getProducts());
+const paintDiv = new PaintDiv();
+paintDiv.run(productsInDB, currentCart);
+
+const prodcutView = new ProductDescriptionPaint();
+prodcutView.run();
+
+const cartProductView = new CartProductsPaint();
+cartProductView.run(currentCart);
+
+const totalProductInCartView = new TotalProductCartPaint();
+totalProductInCartView.run(currentCart);
