@@ -96,51 +96,51 @@ class Img {
 }
 
 const imgsProduct1 = [
-  new Img('col-2-square.jpg', 'col-1-square.jpg'),
-  new Img('col-2-square.jpg', 'col-1-square.jpg'),
-  new Img('col-2-square.jpg', 'col-1-square.jpg'),
+  new Img('mambeSmall.jpg', 'mambeBig.jpg'),
+  new Img('mambeSmall2.jpg', 'mambeBig2.jpg'),
+  new Img('mambeSmall3.jpg', 'mambeBig3.jpg'),
 ]
 
 const imgsProduct2 = [
-  new Img('col-2-square.jpg', 'col-1-square.jpg'),
-  new Img('col-2-square.jpg', 'col-1-square.jpg'),
-  new Img('col-2-square.jpg', 'col-1-square.jpg'),
+  new Img('ambilSmall.jpg', 'ambilBig.jpg'),
+  new Img('ambilSmall2.jpg', 'ambilBig2.jpg'),
+  new Img('ambilSmall3.jpg', 'ambilBig3.jpg'),
 ]
 
 const imgsProduct3 = [
-  new Img('col-2-square.jpg', 'col-1-square.jpg'),
-  new Img('col-2-square.jpg', 'col-1-square.jpg'),
-  new Img('col-2-square.jpg', 'col-1-square.jpg'),
+  new Img('rapeSmall.jpg', 'rapeBig.jpg'),
+  new Img('rapeSmall2.jpg', 'rapeBig2.jpg'),
+  new Img('rapeSmall3.jpg', 'rapeBig3.jpg'),
 ]
 
 const imgsProduct4 = [
-  new Img('col-2-square.jpg', 'col-1-square.jpg'),
-  new Img('col-2-square.jpg', 'col-1-square.jpg'),
-  new Img('col-2-square.jpg', 'col-1-square.jpg'),
+  new Img('alplicadorindiSmall.jpg', 'alplicadorindiBig.jpg'),
+  new Img('alplicadorindiSmall2.jpg', 'alplicadorindiBig2.jpg'),
+  new Img('alplicadorindiSmall3.jpg', 'alplicadorindiBig3.jpg'),
 ]
 
 const imgsProduct5 = [
-  new Img('col-2-square.jpg', 'col-1-square.jpg'),
-  new Img('col-2-square.jpg', 'col-1-square.jpg'),
-  new Img('col-2-square.jpg', 'col-1-square.jpg'),
+  new Img('aplicadorSmall.jpg', 'aplicadorBig.jpg'),
+  new Img('aplicadorSmall2.jpg', 'aplicadorBig2.jpg'),
+  new Img('aplicadorSmall3.jpg', 'aplicadorBig3.jpg'),
 ]
 
 const imgsProduct6 = [
-  new Img('col-2-square.jpg', 'col-1-square.jpg'),
-  new Img('col-2-square.jpg', 'col-1-square.jpg'),
-  new Img('col-2-square.jpg', 'col-1-square.jpg'),
+  new Img('manillaSmall.jpg', 'manillaBig.jpg'),
+  new Img('manillaSmall2.jpg', 'manillaBig2.jpg'),
+  new Img('manillaSmall3.jpg', 'manillaBig3.jpg'),
 ]
 
 const imgsProduct7 = [
-  new Img('col-2-square.jpg', 'col-1-square.jpg'),
-  new Img('col-2-square.jpg', 'col-1-square.jpg'),
-  new Img('col-2-square.jpg', 'col-1-square.jpg'),
+  new Img('cucharaSmall.jpg', 'cucharaBig.jpg'),
+  new Img('cucharaSmall2.jpg', 'cucharaBig2.jpg'),
+  new Img('cucharaSmall3.jpg', 'cucharaBig3.jpg'),
 ]
 
 const imgsProduct8 = [
-  new Img('col-2-square.jpg', 'col-1-square.jpg'),
-  new Img('col-2-square.jpg', 'col-1-square.jpg'),
-  new Img('col-2-square.jpg', 'col-1-square.jpg'),
+  new Img('tulaSmall.jpg', 'tulaBig.jpg'),
+  new Img('tulaSmall2.jpg', 'tulaBig2.jpg'),
+  new Img('tulaSmall3.jpg', 'tulaBig3.jpg'),
 ]
 
 //PRODUCT LIST FOR SHOP PAGE
@@ -222,7 +222,7 @@ const productsInDB = [
   new Product(4,'Aplicador de Rapé individual',   30000, imgsProduct4, '...' ),
   new Product(5,'Aplicador de Rapé',              50000, imgsProduct5, '...' ),
   new Product(6,'Manillas tejidas',               12000, imgsProduct6, '...' ),
-  new Product(7,'Palillo para Ambil',             3000,  imgsProduct7, '...' ),
+  new Product(7,'Cuchara para mambe',             3000,  imgsProduct7, '...' ),
   new Product(8,'Tula tejida para Mambe y Ambil', 42000, imgsProduct8, '...' ),
 ];
 
