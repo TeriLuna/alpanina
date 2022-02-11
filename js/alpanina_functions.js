@@ -486,35 +486,3 @@ cartProductView.run(currentCart);
 
 const totalProductInCartView = new TotalProductCartPaint();
 totalProductInCartView.run(currentCart);
-
-/*================================================================================
-END PURCHASE
-================================================================================*/
-
-const checkout ='http://localhost:3000/checkout';
-const checkoutCart = $('.js-checkout-cart');
-let dataServer = [];
-
-$('.js-finalizar-compra').on('click',() => {
-  if (checkoutCart.length > 0) {
-    $('form input').each((index, el) =>{
-      dataServer.push({
-        label: $(el).siblings('label').text(),
-        value: $(el).val()
-      });
-    });
-  }
-  $.ajax(
-    {
-      url: checkout,
-      method: 'POST',
-      data: {places: dataServer, total: currentCart.totalPrice()},
-      success: (data) => {
-        if(data.status === "ok"){
-          console.log(data.user)
-        alert("Compra realizada con exito por el valor de: $" + data.user.total + '\n' + "Usuario: " + data.user.name + " " + data.user.lastName);
-        }
-      }
-    }
-  );
-});
