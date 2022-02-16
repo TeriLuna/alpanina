@@ -41,6 +41,11 @@
         <div class="header-menu">
           <ul class="nav">
 
+            <!--About-->
+            <li class="nav-item">
+              <a class="nav-link no-underline" href="../../pages/about.html">Nosotros</a>
+            </li>
+            
             <!--Medicina-->
             <li class="nav-item">
               <a class="nav-link no-underline" href="../../pages/mancestral.html">Medicina Ancestral</a>
@@ -121,7 +126,25 @@
                 <!-- Aqui se crea la tabla de compra -->
 
 							</table>
-              <a class="button button-md button-dark button-fullwidth margin-top-20 js-finalizar-compra" href="#">Finalizar compra</a>
+              <a class="button button-md button-dark button-fullwidth margin-top-20" data-toggle="modal" data-target="#endPurchase" href="#">Finalizar compra</a>
+
+              <!-- Modal -->
+              <div class="modal fade" id="endPurchase" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="exampleModalLongTitle">Tu compra ha finalizado con éxito</h5>
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+                    <div class="modal-body">
+                      Gracias por confiar en nosotros. Pronto nos pondremos en contacto contigo para coordinar el envío de tu paquete.
+                    </div>
+                  </div>
+                </div>
+              </div>
+
             </div>
           </div>
         </div><!-- end row -->

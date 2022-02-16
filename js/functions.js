@@ -1,7 +1,11 @@
 /*================================================
 *
+* Template name : Mono
+* Version       : 5.7.4
+* Author        : FlaTheme
+* Author URL    : http://themeforest.net/user/flatheme
 *
-* Table of Contents :
+* Table of Contents : 
 * 1.  Preloaders
 * 2.  Scroll Animations
 * 3.  Background Image
@@ -278,8 +282,8 @@ if (fm.length) {
 ===============================================*/
 $('a[href*="#"]').not('[href="#"]').not('[data-toggle="tab"]').on("click", function(e) {
   if (
-    location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '')
-    &&
+    location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') 
+    && 
     location.hostname == this.hostname
   ) {
     var target = $(this.hash);
@@ -590,7 +594,7 @@ $(".counter").appear(function() {
         }
     });
   });
-
+  
 },{accX: 0, accY: -10});
 
 
@@ -626,7 +630,7 @@ $(".accordion-title").each(function() {
   if ($this.parents(".accordion").find("li").hasClass("active")) {
     var accordionActiveContent = $this.parents(".accordion").find("li.active").children(".accordion-content");
     var accordionHeight = accordionActiveContent.prop("scrollHeight");
-
+    
     accordionActiveContent.css({'max-height': accordionHeight + "px"});
   }
 
@@ -658,7 +662,7 @@ $(".pie-chart").appear(function() {
       }
     });
   });
-
+  
 },{accX: 0, accY: -10});
 
 
@@ -746,7 +750,7 @@ $("#contactform").on("submit", function(e) {
 ===============================================*/
 $(".product-quantity .qnt").append('<a class="dec qnt-button" href="#">-</a><a class="inc qnt-button" href="#">+</a>');
 
-$(document).on("click", ".qnt-button", function(e) {
+$(".qnt-button").on("click", function(e) {
 
   var $button = $(this);
   var oldValue = $button.parent().find("input").val();
@@ -762,10 +766,7 @@ $(document).on("click", ".qnt-button", function(e) {
     }
   }
 
-  const input = $button.parent().find("input");
-  const $input = $(input);
-  newVal = parseInt(newVal);
-  console.log($button.parent());
-  $input.val(newVal).attr('value', newVal).prop('value', newVal);
-  $input.trigger('focus').trigger('blur');
+  $button.parent().find("input").val(newVal);
+  e.preventDefault();
+
 });

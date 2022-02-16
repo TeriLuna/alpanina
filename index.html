@@ -41,6 +41,11 @@
         <div class="header-menu">
           <ul class="nav">
 
+            <!--About-->
+            <li class="nav-item">
+              <a class="nav-link no-underline" href="../pages/about.html">Nosotros</a>
+            </li>
+
             <!--Medicina-->
             <li class="nav-item">
               <a class="nav-link no-underline" href="../pages/mancestral.html">Medicina Ancestral</a>
@@ -54,6 +59,13 @@
             <!--Contact-->
             <li class="nav-item">
               <a class="nav-link no-underline" href="index.html#contact">Contáctanos</a>
+            </li>
+
+            <!--Cart shop-->
+            <li class="nav-item">
+              <a class="nav-link no-underline" href="../pages/shop/cart.html">
+                <i class="fa fa-shopping-cart"></i>
+              </a>
             </li>
           </ul>
         </div>
@@ -97,7 +109,7 @@
     <!-- end Hero section -->
 
     <!-- About section -->
-    <div class="container bg-green-03">
+    <div class="container p-0 bg-green-03">
       <div class="move-top-100">
         <div class="row col-spacing-20">
           <div class="col-12 col-lg-8 offset-lg-2">
@@ -152,8 +164,10 @@
                 <p>Calle 40 sur # 24b-30 <br> Envigado, Colombia</p>
               </div>
             </div><!-- end row(inner) -->
+
             <!-- Contact Form -->
             <div class="contact-form margin-top-50 text-right">
+
               <form class="form-style-2" method="post" id="contactform">
                 <div class="form-row">
                   <div class="col-12 col-sm-6">
@@ -165,13 +179,28 @@
                 </div>
                 <input type="text" id="subject" name="subject" placeholder="Consulta" required>
                 <textarea name="message" id="message" placeholder="Mensaje"></textarea>
-                <button class="button button-lg button-fill-left-outline" type="submit">Enviar Mensaje</button>
+                <button class="button button-lg button-fill-left-outline" type="submit" data-toggle="modal" data-target="#submitResult">Enviar Mensaje</button>
               </form>
+
               <!-- Submit result -->
-              <div class="submit-result">
-                <span id="success">Thank you! Your Message has been sent.</span>
-                <span id="error">Something went wrong, Please try again!</span>
+              <div class="modal fade" id="submitResult" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="exampleModalLongTitle">Tu mensaje ha sido enviado</h5>
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+                    <div class="modal-body text-left">
+                      Gracias por confiar en nosotros.
+                      <br>
+                      Atenderemos tu mensaje en la menor brevedad. Aho!
+                    </div>
+                  </div>
+                </div>
               </div>
+
             </div><!-- end contact-form -->
           </div>
         </div><!-- end row -->
